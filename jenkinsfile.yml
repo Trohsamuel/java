@@ -9,9 +9,9 @@ pipeline:
       steps:
         - script:
             git branch: 'main',
-                url: 'https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/Trohsamuel/java.git'
+                url: 'https://github.com/Trohsamuel/java.git'
     - stage: Build
-      steps:
+      steps: 
         - sh 'mvn clean install'
     - stage: Deploy
       steps:
