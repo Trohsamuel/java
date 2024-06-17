@@ -1,12 +1,15 @@
 pipeline:
   agent:
-    any:
+    any
+  environment:
+    GITHUB_USERNAME: 'Trohsamuel'
+    GITHUB_TOKEN: credentials('github-token') # Configurez ce secret dans Jenkins
   stages:
     - stage: Checkout
       steps:
-        - git:
-            branch: 'main'
-            url: 'https://Trohsamuel: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@github.com/Trohsamuel/java.git'
+        - script:
+            git branch: 'main',
+                url: 'https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/Trohsamuel/java.git'
     - stage: Build
       steps:
         - sh 'mvn clean install'
