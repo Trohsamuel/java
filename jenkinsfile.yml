@@ -8,7 +8,7 @@ pipeline:
     - stage: Checkout
       steps:
         - script:
-            git branch: 'main',
+            git branch: 'master',
                 url: 'https://github.com/Trohsamuel/java.git'
     - stage: Build
       steps: 
