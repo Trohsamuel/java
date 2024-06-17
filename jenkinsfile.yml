@@ -1,0 +1,25 @@
+pipeline:
+  agent:
+    any:
+  stages:
+    - stage: Checkout
+      steps:
+        - git:
+            branch: 'main'
+            url: 'https://Trohsamuel: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@github.com/Trohsamuel/java.git'
+    - stage: Build
+      steps:
+        - sh 'mvn clean install'
+    - stage: Deploy
+      steps:
+        - sh '''
+          echo "Déploiement de l'application"
+          # Ajoutez ici vos étapes de déploiement spécifiques
+          '''
+  post:
+    always:
+      - junit 'target/surefire-reports/*.xml'
+    success:
+      - echo 'Le pipeline a réussi!'
+    failure:
+      - echo 'Le pipeline a échoué.'
